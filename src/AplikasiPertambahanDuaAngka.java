@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,17 +41,37 @@ public class AplikasiPertambahanDuaAngka extends javax.swing.JFrame {
         TombolKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("AplikasiPertambahanDuaAngka");
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setText("Angka 1");
 
         jLabel2.setText("Angka 2");
 
+        Angka1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Angka1FocusGained(evt);
+            }
+        });
         Angka1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Angka1ActionPerformed(evt);
             }
         });
+        Angka1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Angka1KeyTyped(evt);
+            }
+        });
 
+        Angka2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Angka2KeyTyped(evt);
+            }
+        });
+
+        TombolTambah.setBackground(new java.awt.Color(255, 255, 153));
         TombolTambah.setText("Tambah");
         TombolTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +79,7 @@ public class AplikasiPertambahanDuaAngka extends javax.swing.JFrame {
             }
         });
 
+        TombolHapus.setBackground(new java.awt.Color(255, 255, 153));
         TombolHapus.setText("Hapus");
         TombolHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +95,13 @@ public class AplikasiPertambahanDuaAngka extends javax.swing.JFrame {
             }
         });
 
+        TombolKeluar.setBackground(new java.awt.Color(255, 51, 0));
         TombolKeluar.setText("Keluar");
+        TombolKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolKeluarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,12 +114,13 @@ public class AplikasiPertambahanDuaAngka extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(86, 86, 86)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Angka2)
-                            .addComponent(Angka1)
-                            .addComponent(Hasil, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Angka2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                .addComponent(Angka1))
+                            .addComponent(Hasil, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(TombolTambah)
                         .addGap(18, 18, 18)
@@ -109,11 +140,11 @@ public class AplikasiPertambahanDuaAngka extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(Angka2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(Hasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Hasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TombolHapus)
                     .addComponent(TombolTambah)
@@ -135,7 +166,7 @@ public class AplikasiPertambahanDuaAngka extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,17 +177,50 @@ public class AplikasiPertambahanDuaAngka extends javax.swing.JFrame {
     }//GEN-LAST:event_Angka1ActionPerformed
 
     private void TombolTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolTambahActionPerformed
-        // TODO add your handling code here:
+        try {
+        int angka1 = Integer.parseInt(Angka1.getText());
+        int angka2 = Integer.parseInt(Angka2.getText());
+        int hasil = angka1 + angka2;
+        Hasil.setText(" " + hasil);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
         
     }//GEN-LAST:event_TombolTambahActionPerformed
 
     private void TombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolHapusActionPerformed
         // TODO add your handling code here:
+        Angka1.setText("");
+        Angka2.setText("");
+        Hasil.setText("");
+        Angka1.requestFocus();
     }//GEN-LAST:event_TombolHapusActionPerformed
 
     private void HasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HasilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HasilActionPerformed
+
+    private void TombolKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolKeluarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_TombolKeluarActionPerformed
+
+    private void Angka1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Angka1FocusGained
+        // TODO add your handling code here:
+        Angka1.setText("");
+    }//GEN-LAST:event_Angka1FocusGained
+
+    private void Angka1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Angka1KeyTyped
+        // TODO add your handling code here:
+        char karakter = evt.getKeyChar();
+    if (!Character.isDigit(karakter)) {
+        evt.consume(); 
+    }
+    }//GEN-LAST:event_Angka1KeyTyped
+
+    private void Angka2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Angka2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Angka2KeyTyped
 
     /**
      * @param args the command line arguments
