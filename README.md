@@ -17,18 +17,18 @@
 ### 4. Events: ActionListener untuk tombol Tambah, Hapus, dan Keluar
    
 #### A.Tambah
-bash
+```
    private void TombolTambahActionPerformed(java.awt.event.ActionEvent evt) {                                             
         try {
         int angka1 = Integer.parseInt(Angka1.getText());
         int angka2 = Integer.parseInt(Angka2.getText());
         int hasil = angka1 + angka2;
         Hasil.setText(" " + hasil);
-    
+ ```   
 
 
 #### B.Hapus
-  bash
+```
   private void TombolHapusActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         Angka1.setText("");
@@ -36,39 +36,39 @@ bash
         Hasil.setText("");
         Angka1.requestFocus();
     }  
-
+```
 
 #### C.Keluar
-  bash
+ ```
   private void TombolKeluarActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
         System.exit(0);
     }                                         
-  
+ ```
 ### 5. Variasi: 
 #### A.KeyAdapter pada JTextField untuk membatasi input hanya angka
-bash
+```
      private void Angka1KeyTyped(java.awt.event.KeyEvent evt) {                                
         // TODO add your handling code here:
         char karakter = evt.getKeyChar();
     if (!Character.isDigit(karakter)) {
         evt.consume(); 
     }
-
+```
 ####  B.Gunakan JOptionPane untuk menampilkan error input
-bash
+```
 } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
     }
-
+```
 #### C.Implementasikan FocusListener untuk membersihkan JTextField
 saat mendapatkan fokus.
-bash
+```
     private void Angka1FocusGained(java.awt.event.FocusEvent evt) {                                   
         // TODO add your handling code here:
         Angka1.setText("");
     }
-
+```
 ## Foto Aplikasi Setelah di Run
 ![Latihan1](https://github.com/user-attachments/assets/b5403741-6852-45ed-89f8-48aa688f4d7a)
 
